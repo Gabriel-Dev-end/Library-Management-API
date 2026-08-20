@@ -3,23 +3,31 @@ RESTful API built with Python, FastAPI, SQLAlchemy, and Pydantic for managing a 
 
 # 📚 Personal Library & Loan Management API
 
-API RESTful para gerenciamento de biblioteca pessoal e controle do ciclo de vida de empréstimos de livros. Desenvolvida do zero com foco em arquitetura modular, tipagem estática e desacoplamento de camadas.
+A production-ready RESTful API for managing a personal library book catalog and tracking book loan lifecycles. Built from scratch with Python, FastAPI, SQLAlchemy, and Pydantic V2, focusing on modular architecture, static typing, and separation of concerns.
 
-## 🚀 Tecnologias Utilizadas
+---
 
-- **[Python 3.10+](https://www.python.org/)**
-- **[FastAPI](https://fastapi.tiangolo.com/)**: Framework web moderno de alta performance.
-- **[SQLAlchemy 2.0](https://www.sqlalchemy.org/)**: ORM para mapeamento e interação com o banco de dados.
-- **[Pydantic V2](https://docs.pydantic.dev/)**: Validação e serialização de dados.
-- **[SQLite](https://www.sqlite.org/)**: Banco de dados relacional leve para desenvolvimento local.
+## 🚀 Features
 
-## 🏗️ Arquitetura do Projeto
+- **Book Management (CRUD):** Add, view, update (partial updates via `PATCH`), and delete books from your collection.
+- **Loan Lifecycle Management:** Issue loans for available books and process returns.
+- **Data Validation & Serialization:** Enforced strictly via Pydantic V2 schemas (`from_attributes` ORM mode enabled).
+- **Relational Database Management:** Powered by SQLAlchemy ORM with foreign keys, relationships, and custom Enums for book and loan statuses.
+- **Interactive API Documentation:** Auto-generated Swagger UI and ReDoc endpoints.
+
+---
+
+## 🏗️ Project Architecture
+
+The project follows a clean, layered architecture separating database setup, models, validation schemas, business logic, and HTTP endpoints:
 
 ```text
 .
-├── database.py    # Configuração da engine, SessionLocal e Base do SQLAlchemy
-├── models.py      # Mapeamento das tabelas do banco de dados (Book e Loan)
-├── schemas.py     # Contratos de validação e DTOs com Pydantic V2
-├── crud.py        # Camada de regras de negócio e operações de banco de dados
-├── main.py        # Inicialização da aplicação FastAPI e definição das rotas HTTP
-└── README.md
+├── database.py    # Database connection, engine setup, and SessionLocal generator
+├── models.py      # SQLAlchemy ORM models (Book & Loan database entities)
+├── schemas.py     # Pydantic V2 schemas (DTOs for request/response validation)
+├── crud.py        # Business logic, validation rules, and database operations
+├── main.py        # FastAPI initialization and HTTP route declarations
+├── .gitignore     # Ignored files (virtual environment, cache, local SQLite database)
+├── LICENSE        # MIT License
+└── README.md      # Project documentation
