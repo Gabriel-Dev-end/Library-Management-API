@@ -1,5 +1,6 @@
 from pydantic import BaseModel
 import datetime
+from typing import Optional
 
 class BookBase(BaseModel):
     title: str
@@ -13,6 +14,15 @@ class BookBase(BaseModel):
 
 class BookCreate(BookBase):
     pass
+
+class BookUpdate(BaseModel):
+    title: Optional[str] = None
+    author: Optional[str] = None
+    isbn: Optional[str] = None
+    pages: Optional[int] = None
+    cover_image_url: Optional[str] = None
+    language: Optional[str] = None
+    published_date: Optional[datetime.datetime] = None
 
 class BookResponse(BookBase):
     id: int
@@ -29,6 +39,11 @@ class LoanBase(BaseModel):
 
 class LoanCreate(LoanBase):
     pass
+
+class LoanUpdate(BaseModel):
+    borrower_name: Optional[str] = None
+    return_date: Optional[datetime.date] = None
+    status: Optional[str] = None
 
 class LoanResponse(LoanBase):
     id: int

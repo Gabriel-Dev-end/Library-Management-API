@@ -6,9 +6,7 @@ import sqlalchemy.orm as orm
 
 #Carregamento da variável de ambiente DATABASE_URL a partir do arquivo .env.#
 
-db_url = os.getenv("DATABASE_URL")
-load_dotenv()
-
+db_url = os.getenv("DATABASE_URL","sqlite:///./library.db")
 #Criação do mecanismo de conexão com o banco de dados usando SQLAlchemy, com a configuração para não verificar a mesma thread.#
 
 engine = sa.create_engine(db_url, connect_args={"check_same_thread": False})
